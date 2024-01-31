@@ -1,0 +1,40 @@
+.flagsListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1.5rem;
+  place-items: center;
+}
+.countryCard {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 20rem;
+}
+.countryCard img {
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  height: 220px;
+}
+.countryInfo {
+  padding: 1rem;
+  line-height: 1;
+  flex: 1;
+  border-radius: 0 0 5px 5px ;
+}
+.countryInfo p {
+  font-weight: 500;
+}
+.cardDark {
+  background-color: var(--dark-blue-dark-mode-elements);
+}
+.bold {
+  font-weight: 800;
+}
+@media (min-width: 600px) {
+    .flagsListContainer {
+        padding-inline: 4rem;
+    }
+}
