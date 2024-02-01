@@ -28,77 +28,80 @@ const CountryDetails = ({ countryData }) => {
   return (
     <>
       <Header />
+      <button
+        className={`${styles.backBtn} ${darkMode ? styles.darkBtn : ""}`}
+        onClick={() => navigate(-1)}
+      >
+        &larr; Back
+      </button>
+
       <section className={styles.detailsContainer}>
-        <button
-          className={`${styles.backBtn} ${darkMode ? styles.darkBtn : ""}`}
-          onClick={() => navigate(-1)}
-        >
-          &larr; Back
-        </button>
+        <img src={country.flag} alt={`Flag of ${country.name}`} />
 
-        <img src={country.flag} alt="" />
-        <h2>{country.name}</h2>
-
-        <div className={styles.detailsGroup1}>
-          <p>
-            <span className={styles.bold}>Native Name: </span>
-            {country.nativeName}
-          </p>
-          <p>
-            <span className={styles.bold}>Population: </span>
-            {formatPopulationWithCommas(country.population)}
-          </p>
-          <p>
-            <span className={styles.bold}>Region: </span>
-            {country.region}
-          </p>
-          <p>
-            <span className={styles.bold}>Sub Region:</span> {country.subregion}
-          </p>
-          <p>
-            <span className={styles.bold}>Capital:</span> {country.capital}
-          </p>
-        </div>
-
-        <div className={styles.detailsGroup2}>
-          <p>
-            <span className={styles.bold}>Top Level Domain:</span>{" "}
-            {country.topLevelDomain}
-          </p>
-          <p>
-            <span className={styles.bold}>Currency:</span>{" "}
-            {country.currencies && country.currencies[0].name}
-          </p>
-          <p>
-            <span className={styles.bold}>Languages:</span>{" "}
-            {country.languages.map((lang) => lang.name).join(", ")}
-          </p>
-        </div>
-
-        <div className={styles.detailsGroup3}>
-          <p>
-            <span className={styles.bold}>Border Countries:</span>
-          </p>
-          <div className={styles.borderBtns}>
-            {country.borders &&
-              country.borders.length > 0 &&
-              country.borders.map((country) => (
-                <Link
-                  to={`/country/${country}`}
-                  key={country}
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  <button
-                    className={`${styles.borderBtn} ${
-                      darkMode ? styles.darkBtn : ""
-                    }`}
-                  >
-                    {country}
-                  </button>
-                </Link>
-              ))}
+        <section className={styles.details}>
+          <h2>{country.name}</h2>
+          <div className={styles.detailsGroup1}>
+            <p>
+              <span className={styles.bold}>Native Name: </span>
+              {country.nativeName}
+            </p>
+            <p>
+              <span className={styles.bold}>Population: </span>
+              {formatPopulationWithCommas(country.population)}
+            </p>
+            <p>
+              <span className={styles.bold}>Region: </span>
+              {country.region}
+            </p>
+            <p>
+              <span className={styles.bold}>Sub Region:</span>{" "}
+              {country.subregion}
+            </p>
+            <p>
+              <span className={styles.bold}>Capital:</span> {country.capital}
+            </p>
           </div>
-        </div>
+
+          <div className={styles.detailsGroup2}>
+            <p>
+              <span className={styles.bold}>Top Level Domain:</span>{" "}
+              {country.topLevelDomain}
+            </p>
+            <p>
+              <span className={styles.bold}>Currency:</span>{" "}
+              {country.currencies && country.currencies[0].name}
+            </p>
+            <p>
+              <span className={styles.bold}>Languages:</span>{" "}
+              {country.languages.map((lang) => lang.name).join(", ")}
+            </p>
+          </div>
+
+          <div className={styles.detailsGroup3}>
+            <p>
+              <span className={styles.bold}>Border Countries:</span>
+            </p>
+            <div className={styles.borderBtns}>
+              {country.borders &&
+                country.borders.length > 0 &&
+                country.borders.map((country) => (
+                  <Link
+                    to={`/country/${country}`}
+                    key={country}
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    <button
+                      className={`${styles.borderBtn} ${
+                        darkMode ? styles.darkBtn : ""
+                      }`}
+                    >
+                      {country}
+                    </button>
+                  </Link>
+                ))}
+            </div>
+          </div>
+        </section>
       </section>
     </>
   );

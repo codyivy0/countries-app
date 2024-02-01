@@ -8,15 +8,16 @@
 .backBtn {
   padding-inline: 1rem;
   padding-block: 0.5rem;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
   border: none;
   background-color: white;
   margin-bottom: 2rem;
+  margin-left: 2rem;
   width: 7rem;
   cursor: pointer;
 }
-button:active{
-transform: scale(.95);
+button:active {
+  transform: scale(0.95);
 }
 .detailsContainer img {
   width: 100%;
@@ -31,6 +32,15 @@ transform: scale(.95);
   font-size: 16px;
   font-weight: 500;
 }
+.borderBtn {
+  background-color: white;
+  padding-inline: 1rem;
+  padding-block: 0.2rem;
+  width: 100%;
+  border: none;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
 .darkBtn {
   background-color: var(--dark-blue-dark-mode-elements);
   color: white;
@@ -43,15 +53,39 @@ transform: scale(.95);
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
-
-.borderBtn {
-  padding-inline: 1rem;
-  padding-block: 0.2rem;
-  width: 100%;
-  border: none;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
 .borderBtn:active {
-    transform: scale(.95);
+  transform: scale(0.95);
+}
+
+@media (min-width: 600px) {
+  .detailsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 4rem;
+    gap: 4rem;
+    
+  }
+  .detailsContainer img {
+    width: 100%;
+    height: 20rem;
+    margin: 0;
+  }
+  .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-block: 1rem;
+  }
+  .details h2 {
+    grid-column: span 2;
+  }
+  .detailsGroup3 {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    grid-column: span 2;
+  }
+  .borderBtns {
+   display: flex;
+    flex-wrap: wrap;
+  }
 }
