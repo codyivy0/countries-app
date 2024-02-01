@@ -2,15 +2,19 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding-inline: 2rem;
+  padding-inline: 4rem;
 }
 .dropdown {
   padding: 1rem;
   max-width: 15rem;
+  color: var(--dark-gray-light-mode-input);
+  box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
+  border: none;
 }
 .filterInput {
-  max-width: 30rem;
   padding: 1rem;
+  box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
+  border: none;
 }
 .flagsListContainer {
   display: grid;
@@ -24,7 +28,7 @@
   flex-direction: column;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
   max-width: 20rem;
 }
 .countryCard img {
@@ -48,6 +52,13 @@
 .bold {
   font-weight: 800;
 }
+.darkMode {
+  background-color: var(--dark-blue-dark-mode-elements);
+  color: white;
+}
+.darkMode::placeholder {
+  color: white;
+}
 @media (min-width: 600px) {
   .flagsListContainer {
     padding-inline: 4rem;
@@ -55,5 +66,8 @@
   .controls {
     flex-direction: row;
     justify-content: space-between;
+  }
+  .filterInput {
+    width: 30rem;
   }
 }

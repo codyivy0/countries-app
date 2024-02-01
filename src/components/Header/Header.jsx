@@ -5,7 +5,7 @@ const Header = () => {
   const { darkMode, toggleDarkMode } = useTheme();
 
   return (
-    <header className={`${styles.header} ${darkMode ? "dark-mode" : ""}`}>
+    <header className={`${styles.header} ${darkMode ? styles.darkMode : ""}`}>
       <h2>Where in the world?</h2>
 
       <div

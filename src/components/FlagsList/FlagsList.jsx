@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 
 const FlagsList = ({ countryData }) => {
   const { darkMode } = useTheme();
+  const [userInput, setUserInput] = useState("");
 
   const [selectedRegion, setSelectedRegion] = useState("Filter by Region"); // Default to 'All' regions
 
   const regions = [
     "Filter by Region",
-    "All",
     "Asia",
     "Europe",
     "Africa",
@@ -18,10 +18,15 @@ const FlagsList = ({ countryData }) => {
     "Oceania",
   ];
 
-  const filteredCountries =
-    selectedRegion === "All" || selectedRegion === "Filter by Region"
-      ? countryData
-      : countryData.filter((country) => country.region === selectedRegion);
+  const filteredCountries = countryData
+    .filter((country) =>
+      country.name.toLowerCase().includes(userInput.toLowerCase())
+    )
+    .filter((country) =>
+      selectedRegion === "Filter by Region"
+        ? true
+        : country.region === selectedRegion
+    );
 
   const handleRegionChange = (event) => {
     setSelectedRegion(event.target.value);
@@ -31,15 +36,25 @@ const FlagsList = ({ countryData }) => {
     return population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  function handleChange(e) {
+    setUserInput(e.target.value);
+  }
+
   return (
     <>
       {" "}
       <section className={styles.controls}>
-        <input type="text" className={styles.filterInput} placeholder="this doesnt work yet" />
+        <input
+          type="text"
+          className={`${styles.filterInput} ${darkMode ? styles.darkMode : ""}`}
+          placeholder="Search for a country..."
+          value={userInput}
+          onChange={handleChange}
+        />
         <div className={styles.dropdownContainer}>
           <select
             id="regionDropdown"
-            className={styles.dropdown}
+            className={`${styles.dropdown} ${darkMode ? styles.darkMode : ""}`}
             value={selectedRegion}
             onChange={handleRegionChange}
           >
