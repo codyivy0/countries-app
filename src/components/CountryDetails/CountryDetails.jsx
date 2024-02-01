@@ -27,7 +27,7 @@ const CountryDetails = ({ countryData }) => {
 
   return (
     <>
-    <Header />
+      <Header />
       <section className={styles.detailsContainer}>
         <button
           className={`${styles.backBtn} ${darkMode ? styles.darkBtn : ""}`}
@@ -67,7 +67,7 @@ const CountryDetails = ({ countryData }) => {
           </p>
           <p>
             <span className={styles.bold}>Currency:</span>{" "}
-            {country.currencies[0].name}
+            {country.currencies && country.currencies[0].name}
           </p>
           <p>
             <span className={styles.bold}>Languages:</span>{" "}
