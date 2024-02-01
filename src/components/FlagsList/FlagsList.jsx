@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useTheme } from "../../ThemeContext";
 import styles from "./FlagsList.module.css";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 
 const FlagsList = ({ countryData }) => {
   const { darkMode } = useTheme();
@@ -39,10 +41,10 @@ const FlagsList = ({ countryData }) => {
   function handleChange(e) {
     setUserInput(e.target.value);
   }
-
+  console.log(countryData);
   return (
     <>
-      {" "}
+      <Header />
       <section className={styles.controls}>
         <input
           type="text"
@@ -66,34 +68,41 @@ const FlagsList = ({ countryData }) => {
           </select>
         </div>
       </section>
+
       <div className={styles.flagsListContainer}>
         {filteredCountries.map((country, index) => (
-          <div
-            className={`${styles.countryCard} ${
-              darkMode ? styles.cardDark : ""
-            }`}
+          <Link
+            className={`${styles.link} ${darkMode ? styles.darkMode : ""}`}
+            to={`/country/${country.alpha3Code}`}
             key={index}
           >
-            <img src={country.flags.svg} alt="" />
-
             <div
-              className={`${styles.countryInfo} ${
+              className={`${styles.countryCard} ${
                 darkMode ? styles.cardDark : ""
-              } `}
+              }`}
             >
-              <h3>{country.name}</h3>
-              <p>
-                <span className={styles.bold}>Population:</span>{" "}
-                {formatPopulationWithCommas(country.population)}
-              </p>
-              <p>
-                <span className={styles.bold}>Region:</span> {country.region}
-              </p>
-              <p>
-                <span className={styles.bold}>Capital:</span> {country.capital}
-              </p>
+              <img src={country.flags.svg} alt="" />
+
+              <div
+                className={`${styles.countryInfo} ${
+                  darkMode ? styles.cardDark : ""
+                } `}
+              >
+                <h3>{country.name}</h3>
+                <p>
+                  <span className={styles.bold}>Population:</span>{" "}
+                  {formatPopulationWithCommas(country.population)}
+                </p>
+                <p>
+                  <span className={styles.bold}>Region:</span> {country.region}
+                </p>
+                <p>
+                  <span className={styles.bold}>Capital:</span>{" "}
+                  {country.capital}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

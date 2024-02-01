@@ -16,12 +16,18 @@
   box-shadow: 2px 5px 8px 2px rgba(0, 0, 0, 0.1);
   border: none;
 }
+.link {
+    text-decoration: none !important;
+    color: var(--very-dark-blue-light-mode-text);
+}
+
 .flagsListContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
   padding: 1.5rem;
   place-items: center;
+ 
 }
 .countryCard {
   display: flex;
@@ -42,6 +48,7 @@
   line-height: 1;
   flex: 1;
   border-radius: 0 0 5px 5px;
+  text-decoration: none;
 }
 .countryInfo p {
   font-weight: 500;
