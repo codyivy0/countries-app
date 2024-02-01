@@ -75,6 +75,7 @@ const FlagsList = ({ countryData }) => {
             className={`${styles.link} ${darkMode ? styles.darkMode : ""}`}
             to={`/country/${country.alpha3Code}`}
             key={index}
+            onClick={() => window.scrollTo(0, 0)}
           >
             <div
               className={`${styles.countryCard} ${
